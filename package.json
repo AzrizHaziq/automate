@@ -2,8 +2,8 @@
   "name": "automate",
   "version": "1.0.0",
   "scripts": {
-    "bsn:dev": "DEBUG=pw:api dotenv -e .env yarn bsn",
-    "bsn": "playwright test"
+    "bsn:dev": "dotenv -e .env yarn bsn",
+    "bsn": "DEBUG=pw:api playwright test"
   },
   "keywords": [],
   "author": "",
