@@ -1,0 +1,27 @@
+name: Automate BSN SSPN
+
+on:
+  push:
+    branches:
+      - bsn
+  workflow_dispatch:
+#  schedule:
+#    - cron: "0 10 * * 1,2,3,4,5"
+    # Asia/Kuala_Lumpur around 6pm, weekdays only
+
+jobs:
+  automation:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '15.12.0'
+
+      - uses: c-hive/gha-yarn-cache@v2
+      - name: Install packages
+        run: yarn install
+
+      - name: Run BSN
+        run: yarn bsn:ga
