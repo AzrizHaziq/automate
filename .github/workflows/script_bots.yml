@@ -27,7 +27,7 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Run BSN
-        run: yarn bsn:js
+        run: yarn bsn
         env:
           ICS: ${{ secrets.ICS }}
           NODE_ENV: ${{ secrets.NODE_ENV }}

@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "bsn:dev": "DEBUG=pw:api dotenv -e .env yarn bsn",
-    "bsn": "DEBUG=pw:api ts-node bsn",
-    "bsn:js": "DEBUG=pw:api node bsn/index.js"
+    "bsn": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@playwright/test": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
