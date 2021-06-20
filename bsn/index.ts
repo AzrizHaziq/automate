@@ -2,7 +2,7 @@ import { chromium } from 'playwright-chromium'
 
 const isDev = process.env.NODE_ENV === 'development'
 const ics: string[] = process.env.ICS.split(', ')
-
+console.log(ics)
 ;(async () => {
   const browser = await chromium.launch({ headless: !isDev })
   const context = await browser.newContext()
