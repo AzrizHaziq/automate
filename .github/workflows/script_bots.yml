@@ -24,4 +24,7 @@ jobs:
         run: yarn install
 
       - name: Run BSN
-        run: yarn bsn:ga
+        run: yarn bsn
+        env:
+          ICS: ${{ secrets.ICS }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
