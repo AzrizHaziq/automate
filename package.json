@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "bsn:dev": "DEBUG=pw:api dotenv -e .env yarn bsn",
-    "bsn": "ts-node bsn"
+    "bsn": "DEBUG=pw:api ts-node bsn"
   },
   "keywords": [],
   "author": "",
@@ -23,7 +23,6 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "playwright-chromium": "^1.12.2"
   }
 }

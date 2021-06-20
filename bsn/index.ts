@@ -2,13 +2,12 @@ import { chromium } from 'playwright-chromium'
 
 const isDev = process.env.NODE_ENV === 'development'
 const ics: string[] = process.env.ICS.split(', ')
-
+ics.length = 1
 ;(async () => {
   const browser = await chromium.launch({ headless: !isDev })
   const context = await browser.newContext()
 
   async function checkIC(ic: string): Promise<string> {
-    console.log('ic: ', ic)
     const page = await context.newPage()
 
     await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY')
