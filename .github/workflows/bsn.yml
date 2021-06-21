@@ -26,6 +26,8 @@ jobs:
       - name: Install playwright's chrome
         run: npx playwright install-deps chromium
 
+      - uses: microsoft/playwright-github-action@v1
+
       - name: Run BSN
         run: yarn bsn
         env:
