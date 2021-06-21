@@ -1,7 +1,9 @@
-name: Automate BSN SSPN
+name: Automate BSN
 
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
 #  schedule:
 #    - cron: "0 10 * * 1,2,3,4,5"
