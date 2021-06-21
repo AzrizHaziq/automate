@@ -18,7 +18,7 @@ test.describe('Check BSN SSP with my ic', () => {
 
       // await context.tracing.start({ screenshots: true, snapshots: true })
 
-      await page.click('//*[@id="ssp-search"]/div[1]/div/form/div/div[2]/button', { timeout: 5000, force: true })
+      await page.click('#ssp-search button', { force: true })
       // await page.dispatchEvent('#ssp-search button', 'click')
 
       await page.waitForSelector('.ssp-winner-inner h3')

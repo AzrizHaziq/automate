@@ -11,21 +11,20 @@ on:
 
 jobs:
   automation:
-    runs-on: macos-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: '15.12.0'
+      - uses: c-hive/gha-yarn-cache@v2
 
       - name: Install packages
         run: yarn install
 
       - name: Install playwright's chrome
         run: npx playwright install-deps chromium
-
-      - uses: c-hive/gha-yarn-cache@v2
 
       - name: Run BSN
         run: yarn bsn
