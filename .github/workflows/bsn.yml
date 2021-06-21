@@ -11,7 +11,9 @@ on:
 
 jobs:
   automation:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    container:
+      image: arjun27/playwright-bionic:0.1.1
 
     steps:
       - uses: actions/checkout@v2
