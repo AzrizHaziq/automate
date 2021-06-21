@@ -17,8 +17,10 @@ test.describe('Check BSN SSP with my ic', () => {
       await page.dispatchEvent('#ssp-search button', 'click')
 
       console.log('Success click button')
+      await page.waitForTimeout(5000)
       await page.waitForSelector('.ssp-winner-inner h3')
       console.log('Banner displayed')
+
       const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
 
       expect(result).toBe('Tiada hasil padanan.')
