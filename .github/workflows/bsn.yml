@@ -31,3 +31,13 @@ jobs:
         env:
           ICS: ${{ secrets.ICS }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v5.1.0
+        with:
+          author_name: azrizhaziq
+          author_email: azrizhaziq@gmail.com
+          message: "Add screenshot"
+          add: "screenshot.png"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

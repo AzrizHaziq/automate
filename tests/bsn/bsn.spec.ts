@@ -19,13 +19,16 @@ test.describe('Check BSN SSP with my ic', () => {
       // await context.tracing.start({ screenshots: true, snapshots: true })
 
       await page.click('#ssp-search button', { force: true })
-      // await page.dispatchEvent('#ssp-search button', 'click')
+      await page.dispatchEvent('#ssp-search button', 'click')
 
-      await page.waitForSelector('.ssp-winner-inner h3')
-      const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
+      await page.waitForTimeout(5000)
+      await page.screenshot({ path: 'screenshot.png' })
+
+      // await page.waitForSelector('.ssp-winner-inner h3')
+      // const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
 
       // await context.tracing.stop({ path: 'trace.zip' })
-      expect(result).toBe('Tiada hasil padanan.')
+      // expect(result).toBe('Tiada hasil padanan.')
     })
   })
 })
