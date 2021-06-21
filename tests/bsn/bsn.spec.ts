@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 const ics: string[] = process.env.ICS.split(', ')
+// ics.length = 1
 
 test.describe('Check BSN SSP with my ic', () => {
   test.beforeEach(async ({ page }) => {
@@ -10,19 +11,20 @@ test.describe('Check BSN SSP with my ic', () => {
   })
 
   ics.forEach(ic => {
-    test(`Test with ${ic}`, async ({ page }) => {
+    test(`Test with ${ic}`, async ({ page, context }) => {
       await page.waitForSelector('#ssp-search')
       await page.fill('#ssp-search .bsn-custom-input', ic)
       await page.evaluate(body => body.focus(), await page.$('body'))
-      await page.dispatchEvent('#ssp-search button', 'click')
 
-      console.log('Success click button')
-      await page.waitForTimeout(5000)
+      // await context.tracing.start({ screenshots: true, snapshots: true })
+
+      await page.click('//*[@id="ssp-search"]/div[1]/div/form/div/div[2]/button', { timeout: 5000, force: true })
+      // await page.dispatchEvent('#ssp-search button', 'click')
+
       await page.waitForSelector('.ssp-winner-inner h3')
-      console.log('Banner displayed')
-
       const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
 
+      // await context.tracing.stop({ path: 'trace.zip' })
       expect(result).toBe('Tiada hasil padanan.')
     })
   })
