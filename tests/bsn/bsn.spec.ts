@@ -11,14 +11,15 @@ test.describe('Check BSN SSP with my ic', () => {
 
   ics.forEach(ic => {
     test(`Test with ${ic}`, async ({ page }) => {
+      await page.waitForSelector('#ssp-search')
       await page.fill('#ssp-search .bsn-custom-input', ic)
       await page.evaluate(body => body.focus(), await page.$('body'))
       await page.dispatchEvent('#ssp-search button', 'click')
 
+      console.log('Success click button')
       await page.waitForSelector('.ssp-winner-inner h3')
-      await page.waitForTimeout(5000)
+      console.log('Banner displayed')
       const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
-      await page.waitForTimeout(5000)
 
       expect(result).toBe('Tiada hasil padanan.')
     })
