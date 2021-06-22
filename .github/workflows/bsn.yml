@@ -33,7 +33,7 @@ jobs:
           NODE_ENV: ${{ secrets.NODE_ENV }}
 
       - name: Commit changes
-        uses: EndBug/add-and-commit@v5.1.0
+        uses: EndBug/add-and-commit@v7.2.1
         with:
           author_name: azrizhaziq
           author_email: azrizhaziq@gmail.com

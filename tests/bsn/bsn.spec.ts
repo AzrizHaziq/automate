@@ -11,7 +11,7 @@ test.describe('Check BSN SSP with my ic', () => {
   })
 
   ics.forEach(ic => {
-    test(`Test with ${ic}`, async ({ page }) => {
+    test(`Test with`, async ({ page }) => {
       await page.waitForSelector('#ssp-search')
       await page.fill('#ssp-search .bsn-custom-input', ic)
       await page.evaluate(body => body.focus(), await page.$('body'))
