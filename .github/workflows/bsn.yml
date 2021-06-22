@@ -37,7 +37,6 @@ jobs:
         with:
           author_name: azrizhaziq
           author_email: azrizhaziq@gmail.com
-          message: "Add screenshot"
-          add: "screenshot.png"
+          message: "Add screenshot and video"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

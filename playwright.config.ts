@@ -12,6 +12,8 @@ const config: PlaywrightTestConfig = {
 
   use: {
     headless: !isDev,
+    video: 'on',
+    screenshot: 'on',
   },
 }
 export default config
