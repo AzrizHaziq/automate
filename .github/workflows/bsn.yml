@@ -32,11 +32,11 @@ jobs:
           ICS: ${{ secrets.ICS }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7.2.1
-        with:
-          author_name: azrizhaziq
-          author_email: azrizhaziq@gmail.com
-          message: "Add screenshot and video"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Commit changes
+#        uses: EndBug/add-and-commit@v7.2.1
+#        with:
+#          author_name: azrizhaziq
+#          author_email: azrizhaziq@gmail.com
+#          message: "Add screenshot and video"
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
