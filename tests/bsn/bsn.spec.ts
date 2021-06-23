@@ -12,14 +12,19 @@ test.describe('Check BSN SSP with my ic', () => {
 
   ics.forEach(ic => {
     test(`Test with`, async ({ page }) => {
+      await page.screenshot({ path: 'screenshot.png' })
+
       await page.waitForSelector('#ssp-search')
       await page.fill('#ssp-search .bsn-custom-input', ic)
       await page.evaluate(body => body.focus(), await page.$('body'))
 
-      await page.click('#ssp-search button', { force: true })
-      await page.dispatchEvent('#ssp-search button', 'click')
+      await page.screenshot({ path: 'screenshot1.png' })
 
-      await page.waitForTimeout(5000)
+      await page.click('#ssp-search button', { force: true })
+      // await page.dispatchEvent('#ssp-search button', 'click')
+
+      await page.waitForTimeout(2000)
+      await page.screenshot({ path: 'screenshot3.png' })
       // await page.waitForSelector('.ssp-winner-inner h3')
       // const result = await page.$eval('.ssp-winner-inner h3', i => i.textContent)
 
