@@ -5,6 +5,8 @@ ics.length = 1
 
 test.describe('Check BSN SSP with my ic', () => {
   test.beforeEach(async ({ page }) => {
+    page.on('response', response => console.log('<<', response.status(), response.url()))
+
     await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY', { waitUntil: 'networkidle' })
 
     await page.$('#ssp-search').then(i => i.scrollIntoViewIfNeeded())
