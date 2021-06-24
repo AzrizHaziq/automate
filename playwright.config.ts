@@ -1,6 +1,6 @@
 // playwright.config.ts
 import { PlaywrightTestConfig } from '@playwright/test'
-console.log(process.env.NODE_ENV)
+
 const isDev = process.env.NODE_ENV === 'development'
 
 const config: PlaywrightTestConfig = {
@@ -13,7 +13,7 @@ const config: PlaywrightTestConfig = {
   use: {
     headless: !isDev,
     launchOptions: {
-      devtools: true,
+      // devtools: true,
     },
   },
 }
