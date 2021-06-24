@@ -12,6 +12,9 @@ const config: PlaywrightTestConfig = {
 
   use: {
     headless: !isDev,
+    launchOptions: {
+      devtools: true,
+    },
   },
 }
 export default config

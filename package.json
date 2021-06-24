@@ -2,7 +2,7 @@
   "name": "automate",
   "version": "1.0.0",
   "scripts": {
-    "bsn:dev": "dotenv -e .env yarn bsn",
+    "bsn:dev": "dotenv -e .env playwright test",
     "bsn": "DEBUG=pw:api playwright test"
   },
   "keywords": [],

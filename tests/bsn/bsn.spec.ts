@@ -5,7 +5,7 @@ ics.length = 1
 
 test.describe('Check BSN SSP with my ic', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY')
+    await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY', { waitUntil: 'networkidle' })
 
     await page.$('#ssp-search').then(i => i.scrollIntoViewIfNeeded())
   })
@@ -21,7 +21,7 @@ test.describe('Check BSN SSP with my ic', () => {
       await page.screenshot({ path: 'screenshot1.png' })
 
       await page.click('#ssp-search button', { force: true })
-      // await page.dispatchEvent('#ssp-search button', 'click')
+      await page.dispatchEvent('#ssp-search button', 'click')
 
       await page.waitForTimeout(2000)
       await page.screenshot({ path: 'screenshot3.png' })
@@ -32,3 +32,13 @@ test.describe('Check BSN SSP with my ic', () => {
     })
   })
 })
+
+// test('youtube', async ({ page }) => {
+//   await page.goto('https://youtube.com', { waitUntil: 'networkidle' })
+//
+//   for (let i = 2; i <= 4; i++) {
+//     await page.click(`yt-chip-cloud-chip-renderer:nth-child(${i})`, { force: true })
+//     await page.waitForTimeout(2000)
+//     await page.screenshot({ path: `youtube_${i}.png` })
+//   }
+// })
