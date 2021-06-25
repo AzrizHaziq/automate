@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "bsn:dev": "dotenv -e .env playwright test",
-    "bsn": "DEBUG=pw:api playwright test"
+    "bsn": "DEBUG=pw:api playwright test",
+    "tsi": "ts-node abc.ts"
   },
   "keywords": [],
   "author": "",
