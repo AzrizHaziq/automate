@@ -45,15 +45,25 @@ ics.length = 1
 //   }
 // })
 
-test('bursa', async ({ page }) => {
-  const pageNo = 2
-  const per_page = 50
-  await page.goto(
-    `https://www.bursamalaysia.com/market_information/equities_prices?legend[]=[S]&sort_by=short_name&sort_dir=asc&page=${pageNo}&per_page=${per_page}`
-  )
+// test('bursa', async ({ page }) => {
+//   const pageNo = 2
+//   const per_page = 50
+//   await page.goto(
+//     `https://www.bursamalaysia.com/market_information/equities_prices?legend[]=[S]&sort_by=short_name&sort_dir=asc&page=${pageNo}&per_page=${per_page}`
+//   )
+//
+//   await page.waitForTimeout(15000)
+//   await page.screenshot({ path: 'bursa.png' })
+//
+//   expect(1).toBe(1)
+// })
 
-  await page.waitForTimeout(15000)
-  await page.screenshot({ path: 'bursa.png' })
+test('regex101', async ({ page }) => {
+  await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results')
+
+  await page.waitForNavigation()
+  // await page.waitForTimeout(4000)
+  await page.screenshot({ path: 'regex.png' })
 
   expect(1).toBe(1)
 })
