@@ -66,3 +66,12 @@ test('regex101', async ({ page }) => {
 
   expect(1).toBe(2)
 })
+
+test('SC', async ({ page }) => {
+  await page.goto('https://www.sc.com.my/resources/prospectus-exposure')
+
+  await page.waitForTimeout(2000)
+  await page.screenshot({ path: 'bsn.png' })
+
+  expect(1).toBe(2)
+})
