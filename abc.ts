@@ -1,12 +1,13 @@
 import fs from 'fs'
-import { chromium } from 'playwright-chromium'
+// import { chromium } from 'playwright-chromium'
+import puppeteer from 'puppeteer'
 
 async function scrapBursaMalaysia() {
   const scrapUrl = ({ per_page, page }) =>
     `https://www.bursamalaysia.com/market_information/equities_prices?legend[]=[S]&sort_by=short_name&sort_dir=asc&page=${page}&per_page=${per_page}`
 
   try {
-    const browser = await chromium.launch()
+    const browser = await puppeteer.launch()
     const page = await browser.newPage()
     await page.goto(scrapUrl({ page: 1, per_page: 50 }))
 
@@ -27,7 +28,7 @@ async function scrapBursaMalaysia() {
     // grab all syariah list and navigate to each pages.
     for (let i = 1; i <= maxPageNumbers; i++) {
       await page.goto(scrapUrl({ page: i, per_page: 50 }), {
-        waitUntil: 'networkidle',
+        waitUntil: 'networkidle2',
       })
 
       const temp = await page.evaluate(() => {
