@@ -58,11 +58,11 @@ test('bursa', async ({ page }) => {
   expect(1).toBe(1)
 })
 
-// test('regex101', async ({ page }) => {
-//   await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results')
-//
-//   await page.waitForTimeout(2000)
-//   await page.screenshot({ path: 'bsn.png' })
-//
-//   expect(1).toBe(1)
-// })
+test('regex101', async ({ page }) => {
+  await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results')
+
+  await page.waitForTimeout(2000)
+  await page.screenshot({ path: 'bsn.png' })
+
+  expect(1).toBe(2)
+})
