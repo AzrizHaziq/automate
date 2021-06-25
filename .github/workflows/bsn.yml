@@ -23,8 +23,8 @@ jobs:
       - name: Install packages
         run: yarn install
 
-#      - name: Install playwright's chrome
-#        run: npx playwright install-deps chromium
+      - name: Install playwright's chrome
+        run: npx playwright install-deps chromium
 
       - uses: nick-invision/retry@v2
         with:

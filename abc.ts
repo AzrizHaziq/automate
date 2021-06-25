@@ -1,17 +1,25 @@
 import fs from 'fs'
 // import { chromium as puppeteer } from 'playwright-chromium'
 import puppeteer from 'puppeteer'
+// import puppeteer from 'puppeteer-extra'
+// import StealthPlugin from 'puppeteer-extra-plugin-stealth'
+
+// puppeteer.use(StealthPlugin())
 
 async function scrapBursaMalaysia() {
   const scrapUrl = ({ per_page, page }) =>
     `https://www.bursamalaysia.com/market_information/equities_prices?legend[]=[S]&sort_by=short_name&sort_dir=asc&page=${page}&per_page=${per_page}`
 
   try {
-    const browser = await puppeteer.launch({ headless: true })
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-blink-features=AutomationControlled'],
+      headless: true,
+    })
+
     const page = await browser.newPage()
     await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8' })
     await page.setUserAgent(
-      'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36'
+      'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.4472.114 Safari/537.36'
     )
 
     await page.goto(scrapUrl({ page: 1, per_page: 50 }))
