@@ -10,6 +10,8 @@ async function scrapBursaMalaysia() {
     const page = await browser.newPage()
     await page.goto(scrapUrl({ page: 1, per_page: 50 }))
 
+    await page.screenshot({ path: `page-${'1'}.png` })
+
     // getting max size of syariah list by grabbing the value in pagination btn
     const maxPageNumbers = await page.evaluate(() => {
       const paginationBtn = Array.from(document.querySelectorAll('.pagination li [data-val]'))
