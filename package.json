@@ -2,14 +2,14 @@
   "name": "automate",
   "version": "1.0.0",
   "scripts": {
-    "bsn:dev": "dotenv -e .env yarn bsn",
-    "bsn": "DEBUG=pw:api playwright test"
+    "bsn:dev": "dotenv -e .env playwright test",
+    "bsn": "DEBUG=pw:api playwright test",
+    "tsi": "ts-node abc.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
@@ -20,10 +20,13 @@
     "lerna": "^4.0.0",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "puppeteer": "^10.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.3.4"
   },
   "dependencies": {
-    "playwright-chromium": "^1.12.2"
+    "@playwright/test": "^1.12.2",
+    "puppeteer-extra": "^3.1.18",
+    "puppeteer-extra-plugin-stealth": "^2.7.8"
   }
 }

@@ -1,9 +1,9 @@
-name: Automate BSN
+name: TSI
 
 on:
   push:
     branches:
-      - bsn
+      - tsi
   workflow_dispatch:
 #  schedule:
 #    - cron: "0 10 * * 1,2,3,4,5"
@@ -23,14 +23,8 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Install playwright's chrome
-        run: npx playwright install-deps chromium
-
-      - name: Run BSN
-        run: yarn bsn
-        env:
-          ICS: ${{ secrets.ICS }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
+      - name: Run TSI
+        run: yarn run tsi
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
