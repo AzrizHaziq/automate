@@ -4,11 +4,10 @@ const ics: string[] = process.env.ICS.split(', ')
 ics.length = 1
 
 test.describe('Check BSN SSP with my ic', () => {
-  test.beforeEach(async ({ page, browser }) => {
-    await browser.newContext({ userAgent: })
-
+  test.beforeEach(async ({ page }) => {
+    console.log('>>>>>>>>>>', await page.evaluate(() => navigator.userAgent))
+    await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8' })
     await page.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY', { waitUntil: 'networkidle' })
-
     await page.$('#ssp-search').then(i => i.scrollIntoViewIfNeeded())
   })
 

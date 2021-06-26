@@ -18,22 +18,13 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '15.12.0'
-#      - uses: c-hive/gha-yarn-cache@v2
+      - uses: c-hive/gha-yarn-cache@v2
 
       - name: Install packages
         run: yarn install
 
       - name: Install playwright's chrome
         run: npx playwright install-deps chromium
-
-      - uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 1
-          max_attempts: 3
-          command: yarn bsn
-        env:
-          ICS: ${{ secrets.ICS }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
 
       - name: Run BSN
         run: yarn bsn
