@@ -2,14 +2,15 @@
   "name": "automate",
   "version": "1.0.0",
   "scripts": {
-    "bsn:dev": "dotenv -e .env yarn bsn",
-    "bsn": "DEBUG=pw:api playwright test"
+    "test:dev": "dotenv -e .env yarn test",
+    "test:dev:update": "dotenv -e .env yarn test:update",
+    "test:update": "yarn test --update-snapshots",
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
@@ -24,6 +25,7 @@
     "typescript": "^4.3.4"
   },
   "dependencies": {
+    "@playwright/test": "^1.12.2",
     "playwright-chromium": "^1.12.2"
   }
 }

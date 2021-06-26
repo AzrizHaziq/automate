@@ -3,7 +3,7 @@ name: Automate BSN
 on:
   push:
     branches:
-      - main
+      - bsn
   workflow_dispatch:
 #  schedule:
 #    - cron: "0 10 * * 1,2,3,4,5"
@@ -11,7 +11,7 @@ on:
 
 jobs:
   automation:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -32,11 +32,6 @@ jobs:
           ICS: ${{ secrets.ICS }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
 
-#      - name: Commit changes
-#        uses: EndBug/add-and-commit@v7.2.1
-#        with:
-#          author_name: azrizhaziq
-#          author_email: azrizhaziq@gmail.com
-#          message: "Add screenshot and video"
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Add test
