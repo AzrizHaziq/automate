@@ -12,8 +12,8 @@ async function scrapBursaMalaysia() {
 
   try {
     const browser = await puppeteer.launch({
-      args: ['--no-sandbox', '--disable-blink-features=AutomationControlled'],
-      headless: true,
+      args: ['--no-sandbox', '--start-maximized', '--disable-blink-features=AutomationControlled', ' --incognito'],
+      headless: false,
     })
 
     const page = await browser.newPage()
@@ -117,3 +117,32 @@ scrapBursaMalaysia().then(j => {
 // }
 //
 // abc()
+
+// function* generateUserAgent() {
+//   let webkitVersion = 10
+//   let chromeVersion = 1000
+//
+//   const so = [
+//     'Windows NT 6.1; WOW64',
+//     'Windows NT 6.2; Win64; x64',
+//     'Windows NT 5.1; Win64; x64',
+//     'Macintosh; Intel Mac OS X 10_12_6',
+//     'X11; Linux x86_64',
+//     'X11; Linux armv7l',
+//   ]
+//   let soIndex = Math.floor(Math.random() * so.length)
+//
+//   while (true) {
+//     yield `Mozilla/5.0 (${
+//       so[soIndex++ % so.length]
+//     }) AppleWebKit/537.${webkitVersion} (KHTML, like Gecko) Chrome/56.0.${chromeVersion}.87 Safari/537.${webkitVersion} OPR/43.0.2442.991`
+//
+//     webkitVersion++
+//     chromeVersion++
+//   }
+// }
+//
+// const userAgents = generateUserAgent()
+//
+// // ...
+// await page.setUserAgent(userAgents.next().value)
