@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-const ics: string[] = process.env.ICS.split(', ')
+const ics: string[] = (process.env.ICS || '').split(', ')
 
 test.describe('Check BSN SSP with my ic', () => {
   test.beforeEach(async ({ page }) => {

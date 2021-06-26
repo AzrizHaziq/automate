@@ -2,9 +2,10 @@
   "name": "automate",
   "version": "1.0.0",
   "scripts": {
-    "bsn:dev": "dotenv -e .env playwright test",
-    "bsn": "DEBUG=pw:api playwright test",
-    "tsi": "ts-node abc.ts"
+    "test:dev": "dotenv -e .env yarn test",
+    "test:dev:update": "dotenv -e .env yarn test:update",
+    "test:update": "yarn test --update-snapshots",
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "",
