@@ -1,10 +1,7 @@
 import { test, expect } from '@playwright/test'
 
 const ic = (process.env.ICS || '').split(', ')[0]
-const long_password = process.env.MITI_PASS
-
-//  minify => remove whitespace,
-// uglify =>  tukar var, short
+const pass = process.env.MITI_PASS
 
 test.describe('MITI', () => {
   test.beforeEach(async ({ page: p }) => {
