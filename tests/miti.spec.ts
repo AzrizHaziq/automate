@@ -6,8 +6,18 @@ test.describe('MITI', () => {
     await p.goto('https://sahamonline.miti.gov.my/')
   })
 
-  test('is there any new update?', async ({ page: p }) => {
+  test('Is there any new update?', async ({ page: p }) => {
     const el = await p.$('.makluman')
     expect(await el.screenshot()).toMatchSnapshot('miti.png')
+  })
+
+  test('Is there is update on your application', async ({ page: p }) => {
+    await p.fill('input.login', ic)
+    await p.fill('input.password', pass)
+    await p.click('#go')
+
+    await p.click('text=My Saham')
+
+    await p.waitForTimeout(5000)
   })
 })
