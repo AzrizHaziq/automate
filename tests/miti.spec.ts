@@ -23,6 +23,8 @@ test.describe('MITI', () => {
     const el = await p.$('table')
 
     await p.evaluate(() => {
+      document.querySelectorAll('.tooltip').forEach(e => e.remove())
+
       const leaveColsTo = 3
       const tableEl = document.querySelector('table')
 
@@ -35,6 +37,8 @@ test.describe('MITI', () => {
           }
         }
       })
+
+      // remove tooltip icon
     })
 
     expect(await el.screenshot()).toMatchSnapshot('status_miti.png')
