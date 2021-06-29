@@ -12,7 +12,7 @@ test.describe('MITI', () => {
 
   test.only('Is there any new update?', async ({ page: p }) => {
     const el = await p.$('.makluman')
-    expect(await el.screenshot({ path: 'test.png' })).toMatchSnapshot('miti.png')
+    expect(await el.screenshot({ path: 'test.png' })).toMatchSnapshot('miti.png', { threshold: 0.9 })
   })
 
   test('Is there is update on your application', async ({ page: p }) => {
