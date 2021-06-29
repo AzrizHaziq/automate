@@ -1,6 +1,5 @@
 import fs from 'fs'
-// import { chromium as puppeteer } from 'playwright-chromium'
-import puppeteer from 'puppeteer'
+import { chromium as puppeteer } from 'playwright-chromium'
 // import puppeteer from 'puppeteer-extra'
 // import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 
@@ -18,9 +17,7 @@ async function scrapBursaMalaysia() {
 
     const page = await browser.newPage()
     await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8' })
-    await page.setUserAgent(
-      'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.4472.114 Safari/537.36'
-    )
+    // await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.4472.114 Safari/537.36')
 
     await page.goto(scrapUrl({ page: 1, per_page: 50 }))
 
@@ -37,11 +34,9 @@ async function scrapBursaMalaysia() {
       return Math.max(...paginationBtn)
     })
 
-    let syariahList = {}
-
-    // grab all syariah list and navigate to each pages.
+    let syariahList = {} // grab all syariah list and navigate to each pages.
     for (let i = 1; i <= maxPageNumbers; i++) {
-      await page.goto(scrapUrl({ page: i, per_page: 50 }), { waitUntil: 'networkidle0' })
+      await page.goto(scrapUrl({ page: i, per_page: 50 }), { waitUntil: 'networkidle' })
 
       const temp = await page.evaluate(() => {
         const pipe =
