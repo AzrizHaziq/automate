@@ -10,9 +10,9 @@ test.describe('MITI', () => {
     await p.goto('https://sahamonline.miti.gov.my/')
   })
 
-  test('Is there any new update?', async ({ page: p }, testInfo) => {
+  test.only('Is there any new update?', async ({ page: p }) => {
     const el = await p.$('.makluman')
-    expect(await el.screenshot()).toMatchSnapshot('miti.png')
+    expect(await el.screenshot({ path: 'test.png' })).toMatchSnapshot('miti.png')
   })
 
   test('Is there is update on your application', async ({ page: p }) => {
