@@ -4,12 +4,13 @@ const ic = (process.env.ICS || '').split(', ')[0]
 const pass = process.env.MITI_PASS
 
 test.describe('MITI', () => {
-  test.beforeEach(async ({ page: p }) => {
+  test.beforeEach(async ({ page: p }, testInfo) => {
+    testInfo.snapshotSuffix = ''
     await p.setExtraHTTPHeaders({ 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8' })
     await p.goto('https://sahamonline.miti.gov.my/')
   })
 
-  test('Is there any new update?', async ({ page: p }) => {
+  test('Is there any new update?', async ({ page: p }, testInfo) => {
     const el = await p.$('.makluman')
     expect(await el.screenshot()).toMatchSnapshot('miti.png')
   })
@@ -18,12 +19,12 @@ test.describe('MITI', () => {
     await p.fill('input.login', ic)
     await p.fill('input.password', pass)
     await p.click('#go')
-    await p.click('text=My Saham')
+    await p.click('text=MY SAHAM')
 
     const el = await p.$('table')
 
     await p.evaluate(() => {
-      document.querySelectorAll('.tooltip').forEach(e => e.remove())
+      document.querySelectorAll('.tooltip').forEach((e: HTMLElement) => (e.style.display = 'none'))
 
       const leaveColsTo = 3
       const tableEl = document.querySelector('table')
@@ -37,10 +38,8 @@ test.describe('MITI', () => {
           }
         }
       })
-
-      // remove tooltip icon
     })
 
-    expect(await el.screenshot()).toMatchSnapshot('status_miti.png')
+    expect(await el.screenshot()).toMatchSnapshot('miti_status.png')
   })
 })
