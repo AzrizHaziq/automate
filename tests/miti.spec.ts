@@ -10,18 +10,16 @@ test.describe('MITI', () => {
     await p.goto('https://sahamonline.miti.gov.my/')
   })
 
-  test.only('Is there any new update?', async ({ page: p }) => {
+  test('Is there any new update?', async ({ page: p }) => {
     const el = await p.$('.makluman')
-    expect(await el.screenshot({ path: 'test.png' })).toMatchSnapshot('miti.png', { threshold: 0.9 })
+    expect(await el.screenshot()).toMatchSnapshot('miti.png', { threshold: 0.9 })
   })
 
-  test('Is there is update on your application', async ({ page: p }) => {
+  test.only('Is there is update on your application', async ({ page: p }) => {
     await p.fill('input.login', ic)
     await p.fill('input.password', pass)
     await p.click('#go')
-    await p.click('text=MY SAHAM')
-
-    const el = await p.$('table')
+    await p.click('text=My Saham')
 
     await p.evaluate(() => {
       document.querySelectorAll('.tooltip').forEach((e: HTMLElement) => (e.style.display = 'none'))
@@ -40,6 +38,8 @@ test.describe('MITI', () => {
       })
     })
 
-    expect(await el.screenshot()).toMatchSnapshot('miti_status.png')
+    await p.waitForTimeout(2000)
+    const el = await p.$('table')
+    expect(await el.screenshot()).toMatchSnapshot('miti_status.png', { threshold: 0.9 })
   })
 })
