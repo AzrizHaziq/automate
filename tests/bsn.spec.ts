@@ -4,7 +4,6 @@ const ics: string[] = (process.env.ICS || '').split(', ')
 
 test.describe('Check BSN SSP with my ic', () => {
   test.beforeEach(async ({ page: p }) => {
-    test.skip()
     await p.setExtraHTTPHeaders({ 'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8' })
     await p.goto('https://www.bsn.com.my/page/bsn-ssp-draw-results?lang=ms-MY')
     await p.$('#ssp-search').then(i => i.scrollIntoViewIfNeeded())
