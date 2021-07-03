@@ -23,9 +23,6 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Install playwright's chrome
-        run: npx playwright install-deps chromium
-
       - name: Run BSN
         run: yarn test
         env:

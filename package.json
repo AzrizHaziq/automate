@@ -5,7 +5,7 @@
     "test:dev": "dotenv -e .env yarn test",
     "test:dev:update": "dotenv -e .env yarn test:update",
     "test:update": "yarn test --update-snapshots",
-    "test": "DEBUG=pw:api playwright test",
+    "test": "playwright test",
     "dummy": "node dummy.js"
   },
   "keywords": [],
