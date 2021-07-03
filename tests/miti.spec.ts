@@ -15,7 +15,7 @@ test.describe('MITI', () => {
     expect(await el.screenshot()).toMatchSnapshot('miti.png', { threshold: 0.9 })
   })
 
-  test.only('Is there is update on your application', async ({ page: p }) => {
+  test('Is there is update on your application', async ({ page: p }) => {
     await p.fill('input.login', ic)
     await p.fill('input.password', pass)
     await p.click('#go')
