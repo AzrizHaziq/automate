@@ -23,13 +23,23 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Run BSN
+      - name: Run automation test
+        id: automation_test
         run: yarn test
         env:
           ICS: ${{ secrets.ICS }}
           NODE_ENV: ${{ secrets.NODE_ENV }}
           MITI_PASS: ${{ secrets.MITI_PASS }}
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: send custom message with args
+        if: ${{ failure() }}
+        uses: appleboy/telegram-action@master
         with:
-          commit_message: Add test
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: The ${{ github.event_name }} event triggered first step.
+          debug: true
+#      - uses: stefanzweifel/git-auto-commit-action@v4
+#        if: ${{ success() && steps.automation_test.outputs.result == 'failure' }}
+#        with:
+#          commit_message: Add test
