@@ -7,7 +7,7 @@ export default <PlaywrightTestConfig>{
   testDir: 'tests',
   timeout: 30000,
   // retries: process.env.CI ? 2 : 0,
-  // workers: process.env.CI ? 2 : 5,
+  workers: process.env.CI ? 1 : 2,
   use: {
     slowMo: 10,
     userAgent:
