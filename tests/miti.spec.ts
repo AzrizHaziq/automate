@@ -15,11 +15,13 @@ test.describe('MITI', () => {
     expect(await el.textContent()).toMatchSnapshot('miti.txt', { threshold: 0.9 })
   })
 
-  test('Is there is update on your application', async ({ page: p }) => {
+  test.only('Is there is update on your application', async ({ page: p }) => {
     await p.fill('input.login', ic)
     await p.fill('input.password', pass)
     await p.click('#go')
     await p.click('text=My Saham')
+
+    await p.screenshot({ path: 'abc.png' })
 
     await p.evaluate(() => {
       document.querySelectorAll('.tooltip').forEach((e: HTMLElement) => (e.style.display = 'none'))

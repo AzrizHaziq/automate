@@ -32,26 +32,26 @@ jobs:
           MITI_PASS: ${{ secrets.MITI_PASS }}
           DEBUG: ${{ secrets.DEBUG }}
 
-      - name: Run update snapshot
-        if: ${{ failure() }}
-        run: yarn test:update
-        env:
-          ICS: ${{ secrets.ICS }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          MITI_PASS: ${{ secrets.MITI_PASS }}
-          DEBUG: ${{ secrets.DEBUG }}
+#      - name: Run update snapshot
+#        if: ${{ failure() }}
+#        run: yarn test:update
+#        env:
+#          ICS: ${{ secrets.ICS }}
+#          NODE_ENV: ${{ secrets.NODE_ENV }}
+#          MITI_PASS: ${{ secrets.MITI_PASS }}
+#          DEBUG: ${{ secrets.DEBUG }}
 
-      - name: Send to telegram
-        if: ${{ failure() }}
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: The ${{ github.event_name }} event triggered first step.
-          debug: true
+#      - name: Send to telegram
+#        if: ${{ failure() }}
+#        uses: appleboy/telegram-action@master
+#        with:
+#          to: ${{ secrets.TELEGRAM_TO }}
+#          token: ${{ secrets.TELEGRAM_TOKEN }}
+#          args: The ${{ github.event_name }} event triggered first step.
+#          debug: true
 
       - name: Commit new changes
-        if: ${{ failure() }}
+#        if: ${{ failure() }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Add test
