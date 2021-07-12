@@ -12,7 +12,7 @@ test.describe('MITI', () => {
 
   test('Is there any new update?', async ({ page: p }) => {
     const el = await p.$('.makluman')
-    expect(await el.screenshot()).toMatchSnapshot('miti.png', { threshold: 0.9 })
+    expect(await el.textContent()).toMatchSnapshot('miti.txt', { threshold: 0.9 })
   })
 
   test('Is there is update on your application', async ({ page: p }) => {
@@ -40,6 +40,6 @@ test.describe('MITI', () => {
 
     await p.waitForTimeout(2000)
     const el = await p.$('table')
-    expect(await el.screenshot()).toMatchSnapshot('miti_status.png', { threshold: 0.9 })
+    expect(await el.textContent()).toMatchSnapshot('miti_status.txt', { threshold: 0.9 })
   })
 })
