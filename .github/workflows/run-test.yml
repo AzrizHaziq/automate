@@ -31,7 +31,15 @@ jobs:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           MITI_PASS: ${{ secrets.MITI_PASS }}
 
-      - name: send custom message with args
+      - name: Run update snapshot
+        if: ${{ failure() }}
+        run: yarn test:update
+        env:
+          ICS: ${{ secrets.ICS }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          MITI_PASS: ${{ secrets.MITI_PASS }}
+
+      - name: Send to telegram
         if: ${{ failure() }}
         uses: appleboy/telegram-action@master
         with:
@@ -39,7 +47,9 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           args: The ${{ github.event_name }} event triggered first step.
           debug: true
-#      - uses: stefanzweifel/git-auto-commit-action@v4
-#        if: ${{ success() && steps.automation_test.outputs.result == 'failure' }}
-#        with:
-#          commit_message: Add test
+
+      - name: Commit new changes
+        if: ${{ failure() }}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Add test
